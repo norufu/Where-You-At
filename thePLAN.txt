@@ -1,0 +1,6 @@
+
+Compare place names
+-prob few enough that you can count every one
+
+Compare long/lat
+-prob many so might be worth bucketing to avoid comparisons
