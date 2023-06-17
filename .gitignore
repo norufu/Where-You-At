@@ -1,7 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 Location History
-
+node_modules
+2023_MAY.json
+untitled folder
+test.json
+untitled folder.zip
 # dependencies
 /node_modules
 /.pnp
