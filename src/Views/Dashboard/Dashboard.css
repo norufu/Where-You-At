@@ -1,0 +1,15 @@
+.dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputDiv {
+
+}
+
+.outputDiv {
+    display: flex;
+    justify-content: center;
+}

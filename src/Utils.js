@@ -74,28 +74,29 @@ function mySort(property) {
   }
 }
 
-// def getUniquePlaces(data):
-//     tempData = []
-//     count = 0
-//     for place in data:
-//         if(len(tempData) == 0):
-//             place['timesWent'] = 1
-//             tempData.append(place)
-//             continue
-//         isLogged = False
-//         for loggedPlace in tempData:
-//             if(loggedPlace['placeVisit']['location']['placeId'] == place['placeVisit']['location']['placeId']):
-//                 loggedPlace['timesWent'] += 1 
-//                 isLogged = True
-//                 # print(loggedPlace['placeVisit']['location']['placeId'] + '\n' + place['placeVisit']['location']['placeId'])
-                
+export const getPlaceBoxData = (placeData) => { 
+  let returnPlaces = [];
+  for(let i = 0; i < placeData.length; i++) {
+    let obj = {};
+    obj["timesWent"] = placeData[i].timesWent;
+    obj["placeID"] = placeData[i].location.placeId;
+    if(placeData[i]['location'].hasOwnProperty('name')) {
+      obj['placeName'] = placeData[i]['location']['name'];
+      obj['placeAddress'] = placeData[i]['location']['address']
+      obj['isAddress'] = false;
+    }
+    else if(placeData[i]['location'].hasOwnProperty('address')) {
+      obj['placeName'] = placeData[i]['location']['address'];
+      obj['placeAddress'] = placeData[i]['location']['address']
+      obj['isAddress'] = true;
+    }
+    else {
+      obj['placeName'] = "Unnamed";
+      obj['isAddress'] = true;
+    }
 
-//         if(not isLogged):
-//             place['timesWent'] = 1
-//             tempData.append(place)
-            
+    returnPlaces.push(obj);
+  }
 
-//         count+=1
-//     print('\n\n')
-//     print(len(tempData))
-//     return(tempData)
+  return(returnPlaces)
+} 

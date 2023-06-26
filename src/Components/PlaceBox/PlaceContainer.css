@@ -1,0 +1,21 @@
+.placeContainer {
+    width:80%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: row;
+    margin:0px;
+}
+
+.columnDiv {
+    width:50%;
+    padding:20px;
+}
+
+.backgroundPlace {
+    background-color: rgb(220, 173, 193);
+}
+.backgroundAddress {
+    background-color: rgb(173, 198, 220);
+}
