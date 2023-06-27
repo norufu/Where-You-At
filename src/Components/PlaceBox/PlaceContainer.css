@@ -4,12 +4,12 @@
     display:flex;
     justify-content: center;
     /* align-items: center; */
-    flex-direction: row;
+    flex-direction: column;
     margin:0px;
 }
 
 .columnDiv {
-    width:50%;
+    width:100%;
     padding:20px;
 }
 
@@ -18,4 +18,13 @@
 }
 .backgroundAddress {
     background-color: rgb(173, 198, 220);
+}
+
+.toggle {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width:100%;
+    height:50px;
 }

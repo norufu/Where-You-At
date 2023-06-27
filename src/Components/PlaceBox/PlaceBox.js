@@ -1,22 +1,23 @@
 import './PlaceBox.css';
 
-function PlaceBox({placeName, placeAddress, timesWent}) {
+function PlaceBox({info}) {
 
   // console.log(text)
   let cssClass = "placeBox "
 
-  if(placeAddress === placeName) {
-    placeName = "Address"
+  console.log(info)
+  if(info.placeAddress === info.placeName) {
+    info.placeName = "Address"
   }
 
   return (
     <div className={cssClass}>
       <div className='info'>
-        <p>{placeName} </p>
-        <p>{placeAddress}</p>
+        <p>{info.placeName} </p>
+        <p>{info.placeAddress}</p>
       </div>
       <div className='info2'>
-        Times Went: {timesWent}
+        Times Went: {info.timesWent}
       </div>
     </div>
   );
