@@ -1,37 +1,60 @@
 // import AdmZip from 'adm-zip';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlaceContainer from "../../Components/PlaceBox/PlaceContainer.js";
-import {extractZip, sortSegments, getUniquePlaces, getPlaceBoxData} from "../../Utils.js"
+import {extractZip, comparePlaces, sortSegments, getUniquePlaces, getPlaceBoxData} from "../../Utils.js"
 import './Dashboard.css';
 
 function Dashboard() {
-  const [dataIsUploaded, setDataIsUploaded] = useState(false);
   const [placeData, setPlaceData] = useState();
+  const [placeData2, setPlaceData2] = useState();
+  const [comparedData, setComparedData] = useState();
 
+  const [displayResults, setDisplayResults] = useState(false);
+
+  useEffect(() => {
+    if(placeData2)
+      setComparedData(comparePlaces(placeData, placeData2))
+  },[placeData2])
 
   async function parseFile(e) {
 
     let file = e.target.files[0];
     let files = await extractZip(file)
-    // console.log(files)
+
     let segmentData = sortSegments(files)
-    // console.log(segmentData)
+
     let places = getUniquePlaces(segmentData[1])
     let placeBoxData = getPlaceBoxData(places)
 
-    setDataIsUploaded(true);
-    setPlaceData(placeBoxData);
+    if(placeData){
+      setPlaceData2(placeBoxData)
+      console.log("second ! ")
+    }
+    else  {
+      setPlaceData(placeBoxData);
+      console.log("first !")
+    }
+  }
 
-    // console.log(placeBoxData)
+  function showResults() {
+
+    if(placeData && placeData2) { // two entered, comparison mode
+      
+    }
+
+    setDisplayResults(true);
   }
 
   return (
     <div className="dashboard">
       <div className="inputDiv">
-        <input type="file" onChange={parseFile}/>
+        <input className="fileInput" type="file" onChange={parseFile}/>
+        <input className="fileInput" type="file" onChange={parseFile}/>
+        <button onClick={showResults}>Go !</button>
       </div>
+
       <div className="outputDiv">
-        { dataIsUploaded ? <PlaceContainer placeInfo={placeData}></PlaceContainer> :  "upload pls"}
+        { displayResults ? <PlaceContainer p1Info={placeData} p2Info={placeData2} sharedInfo={comparedData}></PlaceContainer> :  "upload pls"}
       </div>
     </div>
   );

@@ -80,6 +80,7 @@ export const getPlaceBoxData = (placeData) => {
     let obj = {};
     obj["timesWent"] = placeData[i].timesWent;
     obj["placeID"] = placeData[i].location.placeId;
+    obj["isShared"] = false;
     if(placeData[i]['location'].hasOwnProperty('name')) {
       obj['placeName'] = placeData[i]['location']['name'];
       obj['placeAddress'] = placeData[i]['location']['address']
@@ -100,3 +101,36 @@ export const getPlaceBoxData = (placeData) => {
 
   return(returnPlaces)
 } 
+
+export const comparePlaces = (placeData1, placeData2) => {
+  let sharedExactPlaces = [];
+  let sharedNamePlaces = [];
+
+  for(let p1 = 0; p1 < placeData1.length; p1++) {
+    for(let p2 = 0; p2 < placeData2.length; p2++) {
+      if(placeData1[p1]['placeID'] === placeData2[p2]['placeID']) {
+        let newEntry = structuredClone(placeData1[p1]);
+        newEntry.isShared = true;
+        sharedExactPlaces.push(newEntry);
+        break;
+      }
+    }
+  }
+
+  return(sharedExactPlaces)
+}
+
+
+// def comparePlaces(p1Places, p2Places):
+//     sharedExactPlaces = [] #exact by id
+//     sharedNamePlaces = [] #shared by name
+//     for p1 in p1Places:
+//         for p2 in p2Places:
+//             if('name' in p2['placeVisit']['location'] and 'name' in p1['placeVisit']['location']): #check exact location by ID
+//                 if(p1['placeVisit']['location']['name'] == p2['placeVisit']['location']['name'] and p1 not in sharedNamePlaces):
+                    
+//                    sharedNamePlaces.append(p1)
+//             if(p1['placeVisit']['location']['placeId'] == p2['placeVisit']['location']['placeId']): #check location names rather than exact location
+//                 sharedExactPlaces.append(p1)
+//                 break
+//     return(sharedExactPlaces)

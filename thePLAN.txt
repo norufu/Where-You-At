@@ -1,6 +1,12 @@
+To do
+-multi player comparisons
+-map view with pins of locations
+-
 
-Compare place names
--prob few enough that you can count every one
 
-Compare long/lat
--prob many so might be worth bucketing to avoid comparisons
+bugs/fixes
+-xiangshan trail example, placeID doesn't work no address. use cords?
+
+idea spew
+-map with coloured pins for p1/p2/shared
+-ability to swap between p1/p2/shared

@@ -5,8 +5,14 @@
     flex-direction: column;
 }
 
-.inputDiv {
+.fileInput {
+    width:200px;
+    height:70px;
+}
 
+.inputDiv {
+    width:200px;
+    height:200px;
 }
 
 .outputDiv {
@@ -14,3 +20,4 @@
     justify-content: center;
     width:70%
 }
+
