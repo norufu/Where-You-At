@@ -81,6 +81,9 @@ export const getPlaceBoxData = (placeData) => {
     obj["timesWent"] = placeData[i].timesWent;
     obj["placeID"] = placeData[i].location.placeId;
     obj["isShared"] = false;
+    obj["long"] = placeData[i].location.longitudeE7/10000000
+    obj["lat"] = placeData[i].location.latitudeE7/10000000
+
     if(placeData[i]['location'].hasOwnProperty('name')) {
       obj['placeName'] = placeData[i]['location']['name'];
       obj['placeAddress'] = placeData[i]['location']['address']

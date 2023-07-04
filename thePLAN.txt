@@ -5,8 +5,13 @@ To do
 
 
 bugs/fixes
+-Make player select highlight more noticable/when you upload a 2nd player later
+-more responsive? lag when switching between place/address/players
 -xiangshan trail example, placeID doesn't work no address. use cords?
+
 
 idea spew
 -map with coloured pins for p1/p2/shared
 -ability to swap between p1/p2/shared
+-slide bar timeline (sliding changes day shown on map/results)
+-stats screen (walked distance, traveled by, place count etc)
