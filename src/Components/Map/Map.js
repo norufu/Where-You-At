@@ -17,16 +17,13 @@ function Map({markers, playerNum}) {
     const [mapRef, setMapRef] = useState();
 
     const markerOutput = generateMarkers()
-    console.log(markerOutput)
     function generateMarkers() {
         if(markers === undefined) return;
 
         let icon;
-        console.log(playerNum)
         if(playerNum === 1) icon = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
         if(playerNum === 2) icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
         if(playerNum === 3) icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        console.log(icon)
 
         let marks = []
         for(let i = 0; i < markers.length; i++) {
@@ -39,8 +36,10 @@ function Map({markers, playerNum}) {
 
     const onMapLoad = (map) => {
         setMapRef(map);
-        const bounds = new google.maps.LatLngBounds();
-        // markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
+        var bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(65, -120),           // top left corner of map
+            new google.maps.LatLng(-65, 120)            // bottom right corner
+        );
         map.fitBounds(bounds);
     };
 
@@ -49,7 +48,7 @@ function Map({markers, playerNum}) {
             {!isLoaded ? (
                 <h1>Loading...</h1>
             ) : (                    
-            <GoogleMap mapContainerClassName="map-container" onLoad={onMapLoad}>
+            <GoogleMap mapContainerClassName="map-container" onLoad={onMapLoad} zoom={10}>
                 {markerOutput}
             </GoogleMap>)}
         </div>

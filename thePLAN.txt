@@ -1,7 +1,7 @@
-To do
--multi player comparisons
--map view with pins of locations
--
+To do RELEASE GOALS
+-better player colouring
+-Instructions page
+-STYLIN
 
 
 bugs/fixes

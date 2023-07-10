@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PlaceContainer from "../../Components/PlaceBox/PlaceContainer.js";
 import {extractZip, comparePlaces, sortSegments, getUniquePlaces, getPlaceBoxData} from "../../Utils.js"
 import './Dashboard.css';
+import Instructions from "../../Components/Instructions/Instructions.js";
 
 function Dashboard() {
   const [placeData, setPlaceData] = useState();
@@ -54,7 +55,7 @@ function Dashboard() {
       </div>
 
       <div className="outputDiv">
-        { displayResults ? <PlaceContainer p1Info={placeData} p2Info={placeData2} sharedInfo={comparedData}></PlaceContainer> :  "upload pls"}
+        { displayResults ? <PlaceContainer p1Info={placeData} p2Info={placeData2} sharedInfo={comparedData}></PlaceContainer> :  <Instructions></Instructions>}
       </div>
     </div>
   );
