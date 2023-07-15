@@ -22,18 +22,37 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
     const [showPlayer, setShowPlayer] = useState(1) //1/2/3, p1/p2/shared
     const [toggleSelected, setToggleSelected] = useState('1');
 
+    const [cssClass, setCssClass] = useState(`columnDiv backgroundPlace player1`) //1/2/3, p1/p2/shared
+
+    // let cssClass = `placeBox player1`
+
+    function generateLink(info) {
+        if(info.placeAddress) {
+          // return(`https://www.google.com/maps/search/?api=1&query_place_id=${info.placeID}`)
+          return(`https://www.google.com/maps/place/?q=place_id:${info.placeID}`)
+          // return(`https://www.google.com/maps/search/?api=1&query=${info.placeAddress}&query_place_id=${info.placeID}`)
+        }
+        else {
+          return(`https://www.google.com/maps/search/?api=1&query_place_id=${info.placeID}`)
+        }
+      }
+
+
     useEffect(() => {
         if(showPlayer === 1) {
             setBoxPlaces(p1Boxes)
             setDisplayedMarkers(p1Markers)
+            setCssClass(`columnDiv backgroundPlace player${showPlayer}`)
         }
         else if(showPlayer === 2) {
             setBoxPlaces(p2Boxes)
             setDisplayedMarkers(p2Markers)
+            setCssClass(`columnDiv backgroundPlace player${showPlayer}`)
         }
         else if (showPlayer === 3) { 
             setBoxPlaces(sharedBoxes)
             setDisplayedMarkers(sharedMarkers)
+            setCssClass(`columnDiv backgroundPlace player${showPlayer}`)
         }
     }, [showPlayer]);
 
@@ -55,8 +74,9 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
         let boxArrPlaces = [];
         let markers = [];
         for(let i = 0; i < placeData.length; i++) {
-            markers.push({lat:placeData[i].lat, lng:placeData[i].long})
-            boxArrPlaces.push(<PlaceBox key={i} info={placeData[i]}></PlaceBox>)
+            let placeLink = generateLink(placeData[i])
+            markers.push({pos: {lat:placeData[i].lat, lng:placeData[i].long}, link: placeLink})
+            boxArrPlaces.push(<PlaceBox key={i} info={placeData[i]} playerNum={playerNum} mapsLink={placeLink}></PlaceBox>)
         }
 
         if(playerNum === 1) {
@@ -87,24 +107,13 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
     };
 
     return (
-        <div className='placeContainer'>
+        <div className="placeContainer">
 
             <ToggleGroup changeHandler={handlePlayerToggle} selected={showPlayer}></ToggleGroup>
-            {/* <ToggleButtonGroup
-                className='toggleButtonGroup'
-                color="primary"
-                value={toggleSelected}
-                exclusive
-                onChange={handlePlayerToggle}
-                aria-label="Platform">
-                <ToggleButton id='1' value="1">Player 1</ToggleButton>
-                <ToggleButton id='2' value="2">Player 2</ToggleButton>
-                <ToggleButton id='3' value="3">Shared</ToggleButton>
-            </ToggleButtonGroup> */}
 
             <Map markers={displayedMarkers} playerNum={showPlayer}></Map>
 
-            <div className='columnDiv backgroundPlace'>{boxPlaces}</div>
+            <div className={cssClass}>{boxPlaces}</div>
         </div>
     );
 }

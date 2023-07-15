@@ -12,17 +12,31 @@
     font-size: 16px;
     border: 2px solid #444;
     border-radius: 4px;
+    margin:5px;
 }
 
-.toggleGroup input[type="radio"]:checked + label {
-    background-color:rgb(173, 198, 220);
-    border-color: rgb(103, 119, 133);
-}
+
 
 .toggleGroup input[type="radio"]:focus + label {
-    border: 2px solid rgb(103, 119, 133);
+    border: 2px solid rgb(0, 0, 0);
 }
 
-.toggleGroup label:hover {
-    background-color: rgb(173, 198, 220);
-  }
+.toggleGroup input[type="radio"]:checked + label[for=b1] {
+    background-color: var(--color-two);
+}
+.toggleGroup input[type="radio"]:checked + label[for=b2] {
+    background-color: var(--color-three);
+}
+.toggleGroup input[type="radio"]:checked + label[for=b3] {
+    background-color: var(--color-four);
+}
+
+.toggleGroup label[for=b1]:hover {
+    background-color: var(--color-two);
+}
+.toggleGroup label[for=b2]:hover {
+    background-color: var(--color-three);
+}
+.toggleGroup label[for=b3]:hover {
+    background-color: var(--color-four);
+}

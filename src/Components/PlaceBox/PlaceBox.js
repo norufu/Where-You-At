@@ -1,26 +1,11 @@
 import './PlaceBox.css';
-function PlaceBox({info}) {
+function PlaceBox({info, playerNum, mapsLink}) {
 
-  // console.log(text)
-  let cssClass = "placeBox "
-  const mapsLink = getLink()
-
-
-  function getLink() {
-    if(info.placeAddress) {
-      // return(`https://www.google.com/maps/search/?api=1&query_place_id=${info.placeID}`)
-      return(`https://www.google.com/maps/place/?q=place_id:${info.placeID}`)
-      // return(`https://www.google.com/maps/search/?api=1&query=${info.placeAddress}&query_place_id=${info.placeID}`)
-    }
-    else {
-      return(`https://www.google.com/maps/search/?api=1&query_place_id=${info.placeID}`)
-    }
-  }
+  let cssClass = `placeBox player${playerNum}`
 
   if(info.placeAddress === info.placeName) {
     info.placeName = "Address"
   }
-
 
   return (
     <div className={cssClass}>

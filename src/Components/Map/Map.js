@@ -16,6 +16,11 @@ function Map({markers, playerNum}) {
 
     const [mapRef, setMapRef] = useState();
 
+    const onMarkerClick = (key) => {
+        window.open(markers[key].link);
+        console.log(key)
+    }
+
     const markerOutput = generateMarkers()
     function generateMarkers() {
         if(markers === undefined) return;
@@ -27,7 +32,7 @@ function Map({markers, playerNum}) {
 
         let marks = []
         for(let i = 0; i < markers.length; i++) {
-            let mark = <Marker position={markers[i]} icon={icon} key={i}></Marker>
+            let mark = <Marker position={markers[i].pos} icon={icon} key={i} onClick={() => onMarkerClick(i)}></Marker>
             marks.push(mark)
         }
 

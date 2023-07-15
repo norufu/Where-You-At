@@ -14,10 +14,21 @@
 }
 
 .backgroundPlace {
-    background-color: rgb(220, 173, 193);
+    background-color: var(--color-two);
 }
 .backgroundAddress {
-    background-color: rgb(173, 198, 220);
+    background-color: var(--color-three);
+}
+
+.player1 {
+    background-color: var(--color-two)}
+
+.player2 {
+    background-color: var(--color-three);
+}
+
+.player3 {
+    background-color: var(--color-four);
 }
 
 .toggle {

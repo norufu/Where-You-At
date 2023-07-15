@@ -8,9 +8,15 @@ import Instructions from "../../Components/Instructions/Instructions.js";
 function Dashboard() {
   const [placeData, setPlaceData] = useState();
   const [placeData2, setPlaceData2] = useState();
+  const [fileName1, setFileName1] = useState();
+  const [fileName2, setFileName2] = useState();
+
   const [comparedData, setComparedData] = useState();
 
   const [displayResults, setDisplayResults] = useState(false);
+
+  const fileInputText1 = placeData ? fileName1 : "Select file "
+  const fileInputText2 = placeData2 ? fileName2 : "Select file "
 
   useEffect(() => {
     if(placeData2)
@@ -18,7 +24,6 @@ function Dashboard() {
   },[placeData2])
 
   async function parseFile(e) {
-
     let file = e.target.files[0];
     let files = await extractZip(file)
 
@@ -29,10 +34,13 @@ function Dashboard() {
 
     if(placeData){
       setPlaceData2(placeBoxData)
+      setFileName2(file.name)
       console.log("second ! ")
     }
     else  {
       setPlaceData(placeBoxData);
+      console.log(file)
+      setFileName1(file.name)
       console.log("first !")
     }
   }
@@ -49,9 +57,19 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="inputDiv">
-        <input className="fileInput" type="file" onChange={parseFile}/>
-        <input className="fileInput" type="file" onChange={parseFile}/>
-        <button onClick={showResults}>Go !</button>
+        <div className="fileInputDiv">
+          <label class="label">
+            <input className="fileInput" type="file" onChange={parseFile}/>
+            <span>{fileInputText1}</span>
+          </label>
+
+          <label class="label">
+            <input className="fileInput" type="file" onChange={parseFile}/>
+            <span>{fileInputText2}</span>
+          </label>
+        </div>
+
+        <button className="goButton" onClick={showResults}>Go !</button>
       </div>
 
       <div className="outputDiv">

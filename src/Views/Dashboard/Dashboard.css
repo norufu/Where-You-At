@@ -5,14 +5,23 @@
     flex-direction: column;
 }
 
-.fileInput {
-    width:200px;
-    height:70px;
+.goButton {
+    width:50%
 }
 
 .inputDiv {
-    width:200px;
-    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:75%;
+}
+
+.fileInputDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width:100%;
 }
 
 .outputDiv {
@@ -21,3 +30,32 @@
     width:70%
 }
 
+
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+}
+.label {
+    width: 200px;
+    height:100px;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    background: #dddddd;
+    display: inline-block;
+}
+.label:hover {
+    background: #5cbd95;
+}
+.label:active {
+    background: #9fa1a0;
+}
+.label:invalid+span {
+    color: #000000;
+}
+.label:valid+span {
+    color: #ffffff;
+}

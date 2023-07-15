@@ -1,6 +1,7 @@
 .map-container {
     height: 100%;
     width: 100%;
+    border: 4px solid var(--colorBase2);
   }
 
 .mapDiv {
