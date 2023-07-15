@@ -24,8 +24,6 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
 
     const [cssClass, setCssClass] = useState(`columnDiv backgroundPlace player1`) //1/2/3, p1/p2/shared
 
-    // let cssClass = `placeBox player1`
-
     function generateLink(info) {
         if(info.placeAddress) {
           // return(`https://www.google.com/maps/search/?api=1&query_place_id=${info.placeID}`)
@@ -113,7 +111,7 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
 
             <Map markers={displayedMarkers} playerNum={showPlayer}></Map>
 
-            <div className={cssClass}>{boxPlaces}</div>
+            {boxPlaces == undefined || boxPlaces.length != 0 ? <div className={cssClass}>{boxPlaces}</div> : <p>No player data</p>}
         </div>
     );
 }

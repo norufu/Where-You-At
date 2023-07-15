@@ -58,12 +58,12 @@ function Dashboard() {
     <div className="dashboard">
       <div className="inputDiv">
         <div className="fileInputDiv">
-          <label class="label">
+          <label className="label">
             <input className="fileInput" type="file" onChange={parseFile}/>
             <span>{fileInputText1}</span>
           </label>
 
-          <label class="label">
+          <label className="label">
             <input className="fileInput" type="file" onChange={parseFile}/>
             <span>{fileInputText2}</span>
           </label>
