@@ -114,6 +114,8 @@ export const comparePlaces = (placeData1, placeData2) => {
       if(placeData1[p1]['placeID'] === placeData2[p2]['placeID']) {
         let newEntry = structuredClone(placeData1[p1]);
         newEntry.isShared = true;
+        newEntry.p1TimesWent = placeData1[p1].timesWent
+        newEntry.p2TimesWent = placeData2[p2].timesWent
         sharedExactPlaces.push(newEntry);
         break;
       }

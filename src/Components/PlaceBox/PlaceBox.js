@@ -18,9 +18,9 @@ function PlaceBox({info, playerNum, mapsLink}) {
         <p>{info.placeID}</p>
       </div>
 
-      {!info.isShared ? <div className='info2'> 
-        Times Went: {info.timesWent}
-      </div> : <></>}
+       <div className='info2'> 
+       {info.isShared ? <p>Times went (p1 - p2): {info.p1TimesWent} - {info.p2TimesWent}</p> : <p>Times Went: {info.timesWent}</p>}
+      </div>  
     </div>
   );
 }

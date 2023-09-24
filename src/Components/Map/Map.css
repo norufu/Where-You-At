@@ -14,3 +14,7 @@
     height:400px;
     padding:20px;
 }
+
+.marker {
+    z-index: 500;
+}

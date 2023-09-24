@@ -73,7 +73,7 @@ function PlaceContainer({p1Info, p2Info, sharedInfo}) {
         let markers = [];
         for(let i = 0; i < placeData.length; i++) {
             let placeLink = generateLink(placeData[i])
-            markers.push({pos: {lat:placeData[i].lat, lng:placeData[i].long}, link: placeLink})
+            markers.push({pos: {lat:placeData[i].lat, lng:placeData[i].long}, link: placeLink, info: placeData[i]})
             boxArrPlaces.push(<PlaceBox key={i} info={placeData[i]} playerNum={playerNum} mapsLink={placeLink}></PlaceBox>)
         }
 
